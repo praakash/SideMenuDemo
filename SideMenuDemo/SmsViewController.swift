@@ -8,7 +8,9 @@
 
 import UIKit
 
-class SmsViewController: UIViewController {
+class SmsViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
+    let smsImage = ["mbltop","mblbank","Utt"]
+    let LabelName = ["mobile TopUp","Mobile Banking","Utility payment"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,5 +33,16 @@ class SmsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return smsImage.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+     let Cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SmsCell", for: indexPath) as! SmsCell
+        Cell.SmsImageView.image = UIImage(named: smsImage[indexPath.row])
+        Cell.SmsLabel.text = LabelName[indexPath.row]
+        return Cell
+    
+    }
+    
 
 }

@@ -8,8 +8,10 @@
 
 import UIKit
 
-class MobileTopViewController: UIViewController {
-
+class MobileTopViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate{
+    
+    let InternetImage = ["mbltop","mblbank","utt","recha"]
+    let LabelName = ["Mobile TopUp","Mobile Banking","Utility Payment","Recharge PIN"]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,15 +23,16 @@ class MobileTopViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+    return InternetImage.count
     }
-    */
-
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let Cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InternetImageCell", for: indexPath) as! InternetImageCell
+        Cell.ImageView.image = UIImage(named:InternetImage[indexPath.row])
+        Cell.Label.text = LabelName[indexPath.row]
+        return Cell
+        
+    }
+    
 }

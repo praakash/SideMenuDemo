@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import LGSideMenuController
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,9 +18,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let menuController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController")
+        
+         let vcController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController")
+        let nav = UINavigationController(rootViewController: vcController)
+        
+        let sideMenuController = LGSideMenuController.init(rootViewController: nav, leftViewController: menuController, rightViewController: nil)
+        window?.rootViewController = sideMenuController
         return true
     }
-
+    
+ //   var navigationBarAppearace = UINavigationBar.appearance()
+   
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

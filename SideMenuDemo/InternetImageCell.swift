@@ -9,5 +9,7 @@
 import UIKit
 
 class InternetImageCell: UICollectionViewCell {
+    @IBOutlet weak var ImageView: UIImageView!
     
+    @IBOutlet weak var Label: UILabel!
 }

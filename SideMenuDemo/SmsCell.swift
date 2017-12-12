@@ -9,5 +9,7 @@
 import UIKit
 
 class SmsCell: UICollectionViewCell {
-    
+
+    @IBOutlet weak var SmsImageView: UIImageView!
+    @IBOutlet weak var SmsLabel: UILabel!
 }
